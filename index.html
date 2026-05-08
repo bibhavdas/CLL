@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soft Skills and Aptitude</title>
+    <style>
+        /* Modernized CSS Reset */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #111111; 
+            color: #333333;
+            line-height: 1.6;
+        }
+
+        #page-wrapper {
+            width: 98%;
+            max-width: 1400px;
+            margin: 15px auto;
+            background-color: #ffffff;
+            box-shadow: 0 0 15px rgba(230, 0, 0, 0.2); 
+            position: relative;
+            overflow: hidden; 
+        }
+
+        /* Decorative SVGs in background */
+        .bg-svg {
+            position: absolute;
+            opacity: 0.05;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .svg-top-right {
+            top: -50px;
+            right: -50px;
+            width: 300px;
+            height: 300px;
+            fill: #e60000;
+        }
+        .svg-bottom-left {
+            bottom: -50px;
+            left: -50px;
+            width: 400px;
+            height: 400px;
+            fill: #111111;
+        }
+
+        /* Header Area */
+        #header-banner {
+            background-color: #111111;
+            color: #ffffff;
+            padding: 40px 30px;
+            border-bottom: 5px solid #e60000; 
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header-text {
+            flex: 1;
+        }
+
+        #header-banner h1 {
+            font-family: 'Gill Sans Ultra Bold', 'Gill Sans MT Ultra Bold', 'Impact', sans-serif;
+            font-size: 42px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+            color: #ffffff;
+            text-shadow: 2px 2px 0px #e60000; 
+        }
+
+        #header-banner p {
+            font-family: 'Georgia', serif;
+            font-size: 18px;
+            color: #cccccc;
+            font-style: italic;
+        }
+
+        .header-icon {
+            width: 80px;
+            height: 80px;
+            fill: #e60000;
+        }
+
+        /* Navigation Bar */
+        #nav-bar {
+            background-color: #222222;
+            border-bottom: 3px solid #aa0000;
+            position: relative;
+            z-index: 1;
+        }
+
+        #nav-bar ul {
+            list-style: none;
+            display: flex;
+        }
+
+        #nav-bar ul li {
+            flex: 1; 
+            border-right: 1px solid #444444;
+        }
+        #nav-bar ul li:last-child {
+            border-right: none;
+        }
+
+        #nav-bar ul li button {
+            display: block;
+            width: 100%;
+            padding: 15px 20px;
+            color: #ffffff;
+            background: none;
+            border: none;
+            cursor: pointer;
+            
+            font-family: 'Georgia', serif;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        #nav-bar ul li button svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        #nav-bar ul li button:hover {
+            background-color: #444444;
+            color: #e60000;
+        }
+
+        #nav-bar ul li button.active {
+            background-color: #e60000;
+            color: #ffffff;
+        }
+
+        /* Main Content Layout */
+        .content-area {
+            display: none; 
+            padding: 30px;
+            min-height: 600px; 
+            position: relative;
+            z-index: 1;
+            background-color: rgba(255, 255, 255, 0.95);
+        }
+
+        .content-area.active {
+            display: block;
+            animation: fadeIn 0.4s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* TAB 1: CONTENTS */
+        .contents-layout {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        /* User Request: Make the rotating image area narrow */
+        .image-banner {
+            width: 100%;
+            background-color: #000000;
+            padding: 5px;
+            border: 2px solid #e60000;
+            border-radius: 4px;
+        }
+
+        .image-banner img {
+            width: 100%;
+            height: 150px; /* Reduced from 400px to make it narrow */
+            object-fit: cover;
+            display: block;
+        }
+
+        .module-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        /* User Request: Make the module buttons have big image backgrounds */
+        .module-btn {
+            flex: 1;
+            background-color: #111111;
+            color: #ffffff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 150px 20px; /* Significantly increased padding (was 60px) for big backgrounds */
+            border: 2px solid #333333;
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+
+            font-family: 'Impact', sans-serif;
+            font-size: 42px; /* Made the font slightly larger to match the new size */
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .module-bg-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+            opacity: 0.4; 
+            transition: opacity 0.3s ease, transform 0.5s ease;
+        }
+
+        .module-btn:hover {
+            border-color: #e60000;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .module-btn:hover .module-bg-img {
+            opacity: 0.7; 
+            transform: scale(1.05); 
+        }
+        
+        .module-btn span {
+            position: relative;
+            z-index: 2;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8); 
+        }
+
+        /* TAB 2: VIDEOS */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+        }
+
+        .video-item {
+            background: #f9f9f9;
+            border: 1px solid #dddddd;
+            border-top: 4px solid #e60000;
+            padding: 15px;
+            border-radius: 4px;
+        }
+
+        .video-item h3 {
+            font-family: 'Georgia', serif;
+            color: #111111;
+            margin-bottom: 15px;
+            font-size: 18px;
+            min-height: 45px;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; 
+            height: 0;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .video-fallback {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        .video-fallback a {
+            color: #e60000;
+            text-decoration: none;
+        }
+        
+        .video-fallback a:hover {
+            text-decoration: underline;
+        }
+
+        /* TAB 3: SYLLABUS */
+        .syllabus-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .syllabus-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .syllabus-header h2 {
+            font-family: 'Gill Sans Ultra Bold', 'Impact', sans-serif;
+            color: #111111;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .syllabus-card {
+            background: #ffffff;
+            border: 2px solid #111111;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+            position: relative;
+            box-shadow: 5px 5px 0px #e60000; 
+        }
+
+        .term-badge {
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            background: #e60000;
+            color: white;
+            padding: 5px 15px;
+            font-family: 'Impact', sans-serif;
+            font-size: 18px;
+            letter-spacing: 1px;
+            border-radius: 4px;
+        }
+
+        .syllabus-card ul {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .syllabus-card ul li {
+            padding: 12px 0;
+            border-bottom: 1px dashed #cccccc;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+        }
+
+        .syllabus-card ul li:last-child {
+            border-bottom: none;
+        }
+
+        .syllabus-card ul li::before {
+            content: '■'; 
+            color: #e60000;
+            margin-right: 15px;
+            font-size: 14px;
+        }
+
+        .plus-divider {
+            text-align: center;
+            font-size: 40px;
+            font-weight: bold;
+            color: #aa0000;
+            margin: -10px 0 20px 0;
+            font-family: 'Impact', sans-serif;
+        }
+
+        /* TAB 4: BTBT HUB iframe */
+        #btbt-iframe {
+            width: 100%;
+            height: 750px;
+            border: 2px solid #111111;
+            background: #f4f4f4;
+            border-radius: 4px;
+        }
+
+        /* Footer */
+        #footer {
+            background-color: #111111;
+            color: #888888;
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+            border-top: 2px solid #e60000;
+            position: relative;
+            z-index: 1;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="page-wrapper">
+        
+        <svg class="bg-svg svg-top-right" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="50,0 100,50 50,100 0,50" />
+        </svg>
+        <svg class="bg-svg svg-bottom-left" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="50" />
+        </svg>
+
+        <div id="header-banner">
+    <div class="header-text">
+        <h1>Soft Skills & Aptitude</h1>
+        <p>CLL 103 Professional Development Portal</p>
+    </div>
+    <img src="logo.png" alt="Portal Logo" class="header-icon">
+</div>
+
+        <div id="nav-bar">
+            <ul>
+                <li>
+                    <button class="tab-link active" onclick="openTab(event, 'tab-contents')">
+                        <svg viewBox="0 0 24 24"><path d="M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z" /></svg>
+                        Contents
+                    </button>
+                </li>
+                <li>
+                    <button class="tab-link" onclick="openTab(event, 'tab-videos')">
+                        <svg viewBox="0 0 24 24"><path d="M8,5.14V19.14L19,12.14L8,5.14Z" /></svg>
+                        Videos
+                    </button>
+                </li>
+                <li>
+                    <button class="tab-link" onclick="openTab(event, 'tab-syllabus')">
+                        <svg viewBox="0 0 24 24"><path d="M18,22A2,2 0 0,0 20,20V4C20,2.89 19.1,2 18,2H12V9L9.5,7.5L7,9V2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18Z" /></svg>
+                        Syllabus
+                    </button>
+                </li>
+                <li>
+                    <button class="tab-link" onclick="openTab(event, 'tab-btbthub')">
+                        <svg viewBox="0 0 24 24"><path d="M16.36,14C16.44,13.34 16.5,12.68 16.5,12C16.5,11.32 16.44,10.66 16.36,10H19.74C19.9,10.64 20,11.31 20,12C20,12.69 19.9,13.36 19.74,14M14.59,19.56C15.19,18.45 15.65,17.25 15.97,16H18.92C17.96,17.65 16.43,18.93 14.59,19.56M14.34,14H9.66C9.56,13.34 9.5,12.68 9.5,12C9.5,11.32 9.56,10.66 9.66,10H14.34C14.43,10.66 14.5,11.32 14.5,12C14.5,12.68 14.43,13.34 14.34,14M12,19.96C11.17,18.76 10.5,17.43 10.09,16H13.91C13.5,17.43 12.83,18.76 12,19.96M8.03,16C8.35,17.25 8.81,18.45 9.41,19.56C7.57,18.93 6.04,17.65 5.08,16M5.08,8C6.04,6.35 7.57,5.07 9.41,4.44C8.81,5.55 8.35,6.75 8.03,8M10.09,8C10.5,6.57 11.17,5.24 12,4.04C12.83,5.24 13.5,6.57 13.91,8M15.97,8C15.65,6.75 15.19,5.55 14.59,4.44C16.43,5.07 17.96,6.35 18.92,8M19.74,10C19.9,9.36 20,8.69 20,8C20,7.31 19.9,6.64 19.74,6H16.36C16.44,6.66 16.5,7.32 16.5,8C16.5,8.68 16.44,9.34 16.36,10M4.26,14C4.1,13.36 4,12.69 4,12C4,11.31 4.1,10.64 4.26,10H7.64C7.56,10.66 7.5,11.32 7.5,12C7.5,12.68 7.56,13.34 7.64,14M4.26,10C4.1,9.36 4,8.69 4,8C4,7.31 4.1,6.64 4.26,6H7.64C7.56,6.66 7.5,7.32 7.5,8C7.5,8.68 7.56,9.34 7.64,10Z" /></svg>
+                        BTBT Hub
+                    </button>
+                </li>
+            </ul>
+        </div>
+
+        <!-- TAB 1: CONTENTS -->
+        <div id="tab-contents" class="content-area active">
+            <div class="contents-layout">
+                <div class="image-banner">
+                    <img id="slideshow" src="sk.jpg" alt="Featured Image">
+                </div>
+
+                <div class="module-links">
+                    <a href="sfkl.html" class="module-btn">
+                        <img src="sfk.webp" alt="Softskills Background" class="module-bg-img">
+                        <span>Softskills Module</span>
+                    </a>
+                    <a href="apt.html" class="module-btn">
+                        <img src="apt.avif" alt="Aptitude Background" class="module-bg-img">
+                        <span>Aptitude Module</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 2: VIDEOS -->
+        <div id="tab-videos" class="content-area">
+            
+            <div style="background-color: #ffeaea; border: 1px solid #ffcccc; padding: 15px; margin-bottom: 25px; border-radius: 4px; color: #aa0000; font-size: 14px;">
+                <strong>These were not shared by any teachers:</strong> I was watching these videos and found them relatable to the syllabus. So I included these.
+            </div>
+
+            <div class="video-grid">
+                <!-- Video 1 -->
+                <div class="video-item">
+                    <h3>What Are Soft Skills? Top 8</h3>
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/hZSARM4VaVs?rel=0" title="YouTube video player" sandbox="allow-same-origin allow-scripts allow-popups allow-forms" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-fallback">
+                        <a href="https://www.youtube.com/watch?v=hZSARM4VaVs" target="_blank">▶ Watch directly on YouTube</a>
+                    </div>
+                </div>
+
+                <!-- Video 2 -->
+                <div class="video-item">
+                    <h3>Top 6 Soft Skills for the Workplace</h3>
+                    <div class="video-wrapper">
+    <a href="https://www.youtube.com/watch?v=SFdSUHslLhU" target="_blank" style="display: block; width: 100%; height: 100%;">
+        <img src="https://img.youtube.com/vi/SFdSUHslLhU/hqdefault.jpg" alt="Video Thumbnail" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0;">
+        
+        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: rgba(230, 0, 0, 0.9); color: white; padding: 15px 25px; border-radius: 5px; font-family: 'Impact', sans-serif; font-size: 20px; letter-spacing: 1px; text-transform: uppercase; box-shadow: 0 4px 8px rgba(0,0,0,0.5);">
+            ▶ Play on YouTube
+        </div>
+    </a>
+</div>
+                    <div class="video-fallback">
+                        <a href="https://www.youtube.com/watch?v=SFdSUHslLhU" target="_blank">▶ Watch directly on YouTube</a>
+                    </div>
+                </div>
+
+                <!-- Video 3 -->
+                <div class="video-item">
+                    <h3>Introduction to Soft Skills (IIT Roorkee)</h3>
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/DUlsNJtg2L8?rel=0" title="YouTube video player" sandbox="allow-same-origin allow-scripts allow-popups allow-forms" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-fallback">
+                        <a href="https://www.youtube.com/watch?v=DUlsNJtg2L8" target="_blank">▶ Watch directly on YouTube</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 3: SYLLABUS -->
+        <div id="tab-syllabus" class="content-area">
+            <div class="syllabus-container">
+                <div class="syllabus-header">
+                    <h2>CLL 103 Course Syllabus</h2>
+                    <p style="color: #666; font-family: 'Georgia', serif;">Paper Name: Soft Skills and Aptitude</p>
+                </div>
+
+                <div class="syllabus-card">
+                    <div class="term-badge">MIDTERM</div>
+                    <ul>
+                        <li>Power & Roots</li>
+                        <li>Alphabetical Problem</li>
+                        <li>Letter series</li>
+                        <li>Divisibility rule</li>
+                    </ul>
+                </div>
+
+                <div class="plus-divider">+</div>
+
+                <div class="syllabus-card">
+                    <div class="term-badge">END TERM</div>
+                    <ul>
+                        <li>Number series (No series)</li>
+                        <li>Coding decoding</li>
+                        <li>Calendar</li>
+                        <li>Fraction, Decimal, Percentage</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 4: BTBT HUB -->
+        <div id="tab-btbthub" class="content-area">
+            <h2 style="font-family: 'Gill Sans Ultra Bold', 'Impact', sans-serif; color: #111; margin-bottom: 20px;">BTBT Hub Dashboard</h2>
+            <iframe id="btbt-iframe" src="https://bibhavdas.github.io/BTBT-SECTION-D-HUB/" title="BTBT Hub"></iframe>
+        </div>
+
+        <div id="footer">
+            Good luck for the exam.
+        </div>
+
+    </div>
+
+    <script>
+        const images = [
+            "sk.jpg", 
+            "ap.jpg"
+        ];
+        
+        let currentIndex = 0;
+        const imageElement = document.getElementById("slideshow");
+
+        setInterval(() => {
+            if(imageElement) {
+                currentIndex = (currentIndex + 1) % images.length;
+                imageElement.src = images[currentIndex];
+            }
+        }, 5000);
+
+        function openTab(evt, tabId) {
+            const contentAreas = document.getElementsByClassName("content-area");
+            for (let i = 0; i < contentAreas.length; i++) {
+                contentAreas[i].classList.remove("active");
+            }
+
+            const tabLinks = document.getElementsByClassName("tab-link");
+            for (let i = 0; i < tabLinks.length; i++) {
+                tabLinks[i].classList.remove("active");
+            }
+
+            document.getElementById(tabId).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
+
+</body>
+</html>

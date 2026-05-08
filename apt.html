@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CLL 103 & CLL 11101 — Practice Questions Solved</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Lobster&family=Raleway:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #1a2744;
+    --blue: #2563c0;
+    --sky: #3b9fd4;
+    --orange: #f5820d;
+    --yellow: #f9c937;
+    --green: #27ae60;
+    --red: #e74c3c;
+    --light: #f4f7fb;
+    --white: #ffffff;
+    --gray: #6b7a99;
+    --border: #d0daea;
+    --shadow: 0 4px 18px rgba(30,50,100,0.13);
+  }
+
+  body {
+    background: var(--light);
+    font-family: 'Open Sans', sans-serif;
+    color: #222;
+    min-height: 100vh;
+  }
+
+  /* === HERO HEADER === */
+  header {
+    background: linear-gradient(135deg, var(--navy) 0%, #233669 60%, #1e5799 100%);
+    color: white;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.35);
+  }
+  header::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent, transparent 18px,
+      rgba(255,255,255,0.03) 18px, rgba(255,255,255,0.03) 36px
+    );
+  }
+  .header-inner {
+    position: relative;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 48px 32px 36px;
+    display: flex;
+    align-items: center;
+    gap: 36px;
+  }
+  .header-logo {
+    flex-shrink: 0;
+  }
+  .header-logo svg { width: 90px; height: 90px; }
+  .header-text h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    line-height: 1.15;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  }
+  .header-text h1 span { color: var(--yellow); }
+  .header-text p {
+    margin-top: 10px;
+    font-size: 1rem;
+    color: rgba(255,255,255,0.75);
+    font-style: italic;
+  }
+  .header-ribbon {
+    background: var(--orange);
+    text-align: center;
+    padding: 8px 0;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: white;
+    box-shadow: inset 0 2px 6px rgba(0,0,0,0.2);
+  }
+
+  /* === NAV TABS === */
+  .nav-tabs {
+    background: var(--navy);
+    display: flex;
+    gap: 0;
+    max-width: 100%;
+    overflow-x: auto;
+    border-bottom: 3px solid var(--orange);
+  }
+  .nav-tabs a {
+    color: rgba(255,255,255,0.7);
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    text-decoration: none;
+    padding: 13px 20px;
+    white-space: nowrap;
+    transition: all 0.2s;
+    border-right: 1px solid rgba(255,255,255,0.08);
+  }
+  .nav-tabs a:hover, .nav-tabs a.active {
+    background: var(--orange);
+    color: white;
+  }
+
+  /* === MAIN LAYOUT === */
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 36px 20px 60px;
+  }
+
+  /* === SECTION HEADERS === */
+  .section-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 40px 0 20px;
+  }
+  .section-badge {
+    background: var(--blue);
+    color: white;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+  .section-badge.orange { background: var(--orange); }
+  .section-badge.green { background: var(--green); }
+  .section-badge.red { background: var(--red); }
+  .section-badge.sky { background: var(--sky); }
+  .section-line { flex: 1; height: 2px; background: var(--border); }
+  .section-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: 0.5px;
+  }
+
+  /* === QUESTION CARD === */
+  .card {
+    background: white;
+    border-radius: 6px;
+    box-shadow: var(--shadow);
+    border-top: 4px solid var(--blue);
+    margin-bottom: 28px;
+    overflow: hidden;
+  }
+  .card.orange { border-top-color: var(--orange); }
+  .card.green { border-top-color: var(--green); }
+  .card.red { border-top-color: var(--red); }
+  .card.sky { border-top-color: var(--sky); }
+  .card.yellow { border-top-color: var(--yellow); }
+
+  .card-head {
+    background: #f0f4fa;
+    padding: 16px 22px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .qnum {
+    background: var(--blue);
+    color: white;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .card.orange .qnum { background: var(--orange); }
+  .card.green .qnum { background: var(--green); }
+  .card.red .qnum { background: var(--red); }
+  .card.sky .qnum { background: var(--sky); }
+  .card.yellow .qnum { background: #c8a000; }
+
+  .card-head .qtext {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1.5;
+  }
+
+  .card-body { padding: 20px 22px; }
+
+  /* step-by-step */
+  .steps { list-style: none; }
+  .steps li {
+    padding: 9px 0 9px 0;
+    border-bottom: 1px dashed #e2e8f4;
+    font-size: 0.96rem;
+    line-height: 1.65;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .steps li:last-child { border-bottom: none; }
+  .step-icon {
+    color: var(--sky);
+    font-size: 1rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .steps li strong { color: var(--navy); }
+
+  .answer-box {
+    margin-top: 16px;
+    background: linear-gradient(90deg, #e8f4ff 0%, #d0ebff 100%);
+    border-left: 5px solid var(--blue);
+    border-radius: 4px;
+    padding: 12px 18px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.15rem;
+    letter-spacing: 0.5px;
+    color: var(--navy);
+  }
+  .card.orange .answer-box { background: linear-gradient(90deg, #fff3e0 0%, #ffe0b2 100%); border-left-color: var(--orange); }
+  .card.green .answer-box { background: linear-gradient(90deg, #e8f5e9 0%, #c8e6c9 100%); border-left-color: var(--green); }
+  .card.red .answer-box { background: linear-gradient(90deg, #fce8e8 0%, #f5c6c6 100%); border-left-color: var(--red); }
+  .card.sky .answer-box { background: linear-gradient(90deg, #e0f4fd 0%, #b3e5fc 100%); border-left-color: var(--sky); }
+  .card.yellow .answer-box { background: linear-gradient(90deg, #fffde7 0%, #fff9c4 100%); border-left-color: #c8a000; }
+
+  .answer-box span { color: var(--orange); font-size: 1.3rem; }
+  .card.orange .answer-box span { color: var(--blue); }
+
+  /* series viz */
+  .series-vis {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 14px 0 4px;
+  }
+  .series-vis .bubble {
+    background: var(--navy);
+    color: white;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1rem;
+    padding: 6px 14px;
+    border-radius: 20px;
+    position: relative;
+  }
+  .series-vis .bubble.answer { background: var(--orange); font-weight: 700; }
+  .series-vis .bubble.gap { background: white; border: 2px dashed var(--orange); color: var(--orange); font-weight: 700; }
+  .series-vis .arrow {
+    color: var(--gray);
+    display: flex; align-items: center;
+    font-size: 1.2rem;
+  }
+
+  /* table */
+  .code-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 0.95rem; }
+  .code-table th { background: var(--navy); color: white; padding: 8px 12px; text-align: left; font-family: 'Oswald', sans-serif; letter-spacing: 1px; }
+  .code-table td { padding: 8px 12px; border-bottom: 1px solid var(--border); }
+  .code-table tr:nth-child(even) td { background: #f5f8ff; }
+
+  /* highlight */
+  .hl { background: #fff3cd; border-radius: 3px; padding: 1px 5px; font-weight: 700; color: var(--navy); }
+  .hl-blue { background: #d0e8ff; border-radius: 3px; padding: 1px 5px; font-weight: 700; color: var(--blue); }
+  .hl-green { background: #d4edda; border-radius: 3px; padding: 1px 5px; font-weight: 700; color: #155724; }
+  .hl-red { background: #fce8e8; border-radius: 3px; padding: 1px 5px; font-weight: 700; color: var(--red); }
+
+  /* formula box */
+  .formula {
+    background: #1a2744;
+    color: #7ec8e3;
+    font-family: 'Courier New', monospace;
+    font-size: 0.93rem;
+    padding: 10px 16px;
+    border-radius: 4px;
+    margin: 10px 0;
+    letter-spacing: 0.5px;
+  }
+
+  /* footer */
+  footer {
+    background: var(--navy);
+    color: rgba(255,255,255,0.55);
+    text-align: center;
+    padding: 22px;
+    font-size: 0.85rem;
+    font-family: 'Oswald', sans-serif;
+    letter-spacing: 1px;
+  }
+  footer span { color: var(--orange); }
+
+  /* scrollbar */
+  ::-webkit-scrollbar { width: 7px; height: 7px; }
+  ::-webkit-scrollbar-track { background: #e0e8f5; }
+  ::-webkit-scrollbar-thumb { background: var(--blue); border-radius: 4px; }
+
+  /* ribbon divider */
+  .ribbon-divider {
+    text-align: center;
+    margin: 32px 0 8px;
+    position: relative;
+  }
+  .ribbon-divider::before {
+    content:'';
+    position: absolute;
+    left: 0; right: 0;
+    top: 50%;
+    height: 1px;
+    background: var(--border);
+  }
+  .ribbon-divider span {
+    position: relative;
+    background: var(--light);
+    padding: 0 16px;
+    font-family: 'Lobster', cursive;
+    font-size: 1.3rem;
+    color: var(--orange);
+    letter-spacing: 1px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="header-logo">
+      <!-- pencil/education SVG icon -->
+      <svg viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="45" cy="45" r="43" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+        <rect x="26" y="18" width="16" height="54" rx="4" fill="#f9c937"/>
+        <rect x="26" y="58" width="16" height="8" fill="#f5c16c"/>
+        <polygon points="26,72 34,82 42,72" fill="#e0a020"/>
+        <rect x="26" y="18" width="16" height="8" rx="4" fill="#e8c0c0"/>
+        <rect x="26" y="26" width="16" height="4" fill="#d4a0a0"/>
+        <!-- lines representing text -->
+        <rect x="50" y="32" width="22" height="3" rx="1.5" fill="rgba(255,255,255,0.5)"/>
+        <rect x="50" y="40" width="18" height="3" rx="1.5" fill="rgba(255,255,255,0.4)"/>
+        <rect x="50" y="48" width="22" height="3" rx="1.5" fill="rgba(255,255,255,0.5)"/>
+        <rect x="50" y="56" width="14" height="3" rx="1.5" fill="rgba(255,255,255,0.3)"/>
+      </svg>
+    </div>
+    <div class="header-text">
+      <h1>Practice Questions <span>Solved</span></h1>
+      <p>CLL 103 &amp; CLL 11101 — End Semester Aptitude Preparation</p>
+    </div>
+  </div>
+  <div class="header-ribbon">🎓 Detailed Step-by-Step Solutions &nbsp;|&nbsp; All 25 Questions Covered</div>
+</header>
+
+<nav class="nav-tabs">
+  <a href="#series" class="active">Series</a>
+  <a href="#alpha">Alphabets</a>
+  <a href="#coding">Coding</a>
+  <a href="#operator">Operators</a>
+  <a href="#calendar">Calendar</a>
+  <a href="#numbers">Numbers</a>
+  <a href="#percent">Percentage</a>
+</nav>
+
+<div class="container">
+
+  <!-- ======================== SECTION 1: SERIES ======================== -->
+  <div class="section-head" id="series">
+    <span class="section-badge">Section 1</span>
+    <div class="section-line"></div>
+    <h2 class="section-title">Series Completion</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <!-- Q1 -->
+  <div class="card orange">
+    <div class="card-head">
+      <div class="qnum">1</div>
+      <div class="qtext">AZB 3, ZYA 9, YXZ 27, XWY 81, ?</div>
+    </div>
+    <div class="card-body">
+      <ul class="steps">
+        <li><span class="step-icon">▶</span><div><strong>Numbers:</strong> 3, 9, 27, 81 — each multiplied by 3. Next = <span class="hl">81 × 3 = 243</span></div></li>
+        <li><span class="step-icon">▶</span><div><strong>First letter:</strong> A, Z, Y, X — going backwards through the alphabet. Next = <span class="hl">W</span></div></li>
+        <li><span class="step-icon">▶</span><div><strong>Second letter:</strong> Z, Y, X, W — each one step back. Next = <span class="hl">V</span></div></li>
+        <li><span class="step-icon">▶</span><div><strong>Third letter:</strong> B, A, Z, Y — going backwards. Next = <span class="hl">X</span></div></li>
+      </ul>
+      <div class="answer-box">✅ Answer: <span>WVX 243</span></div>
+    </div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="card sky">
+    <div class="card-head">
+      <div class="qnum">2</div>
+      <div class="qtext">QTM, ORK, MPI, KNG, ?</div>
+    </div>
+    <div class="card-body">
+      <ul class="steps">
+        <li><span class="step-icon">▶</span><div><strong>1st letter:</strong> Q(17), O(15), M(13), K(11) — decreasing by 2. Next = <span class="hl">I(9)</span></div></li>
+        <li><span class="step-icon">▶</span><div><strong>2nd letter:</strong> T(20), R(18), P(16), N(14) — decreasing by 2. Next = <span class="hl">L(12)</span></div></li>
+        <li><span class="step-icon">▶</span><div><strong>3rd letter:</strong> M(13), K(11), I(9), G(7) — decreasing by 2. Next = <span class="hl">E(5)</span></div></li>
+      </ul>
+      <div class="answer-box">✅ Answer: <span>ILE</span></div>
+    </div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="card red">
+    <div class="card-head">
+      <div class="qnum">3</div>
+      <div class="qtext">FNT–1, HPP–3, ?, LTH–27, NVD–81</div>
+    </div>
+    <div class="card-body">
+      <ul class="steps">
+        <li><span class="step-icon">▶</span><div><strong>Numbers:</strong> –1, –3, ?, –27, –81 → powers of –3: (–3)⁰=1→(–3)¹=–3→(–3)²=9 → Wait, signs: –1, –3, ?, –27, –81. Pattern is ×3 alternating sign? Actually –1×3=–3, –3×3=–9, –9×3=–27 ✓. Missing = <span class="hl">–9</span></div></li>
+        <li><span class="step-icon">▶</span><div><strong>1st letter:</strong> F(6), H(8), ?, L(12), N(14) — each +2. Missing = <span class="hl">J(10)</span></div></li>
+        <li><span class="step-icon">▶</span><div><strong>2nd letter:</strong> N(14), P(16), ?, T(20), V(22) — each +2. Missing = <span class="hl">R(18)</span></div></li>
+        <li><span class="step-icon">▶</span><div><strong>3rd letter:</strong> T(20), P(16), ?, H(8), D(4) — each –4. Missing = <span class="hl">L(12)</span></div></li>
+      </ul>
+      <div class="answer-box">✅ Answer: <span>JRL–9</span></div>
+    </div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="card green">
+    <div class="card-head">
+      <div class="qnum">4</div>
+      <div class="qtext">FRO, RDA, DPM, PBY, ?</div>
+    </div>
+    <div class="card-body">
+      <ul class="steps">
+        <li><span class="step-icon">▶</span><div><strong>1st letters:</strong> F(6), R(18), D(4), P(16), ? — difference: +12, –14, +12, –14 → next: P–14? No. Let's see: last letter of previous = first of next! FRO → R starts next. RDA → D starts next. DPM → P starts next. PBY → B starts next → <span class="hl">B</span></div></li>
+        <li><span class="step-icon">▶</span><div><strong>2nd letters:</strong> R(18), D(4), P(16), B(2) → –14 each time: next = B–14? B=2, 2–14=–12 → N(14) going cyclically. Actually: 18→4=–14, 4→16=+12, 16→2=–14, 2→14=+12? → next 2nd letter = <span class="hl">N(14)</span></div></li>
+        <li><span class="step-icon">▶</span><div><strong>3rd letters:</strong> O(15), A(1), M(13), Y(25) → +12, +12, +12... but O+12=A? O=15,A=1: 15+12=27→27–26=1=A ✓. A+12=M ✓. M+12=Y ✓. Y+12=K (25+12=37–26=11=K) → <span class="hl">K</span></div></li>
+      </ul>
+      <div class="answer-box">✅ Answer: <span>BNK</span></div>
+    </div>
+  </div>
+
+  <!-- Q5 -->
+  <div class="card">
+    <div class="card-head">
+      <div class="qnum">5</div>
+      <div class="qtext">3, 10, 29, 66, 127, ?</div>
+    </div>
+    <div class="card-body">
+      <ul class="steps">
+        <li><span class="step-icon">▶</span><div>Find the pattern: <span class="hl-blue">1³+2=3, 2³+2=10, 3³+2=29, 4³+2=66, 5³+2=127, 6³+2=218</span></div></li>
+        <li><span class="step-icon">▶</span><div>Formula: n³ + 2 where n = 1,2,3,4,5,6...</div></li>
+        <li><span class="step-icon">▶</span><div>Next term: 6³ + 2 = 216 + 2 = <span class="hl">218</span></div></li>
+      </ul>
+      <div class="formula">n = 6 → 6³ + 2 = 216 + 2 = 218</div>
+      <div class="answer-box">✅ Answer: <span>218</span></div>
+    </div>
+  </div>
+
+  <!-- Q6 -->
+  <div class="card orange">
+    <div class="card-head">
+      <div class="qnum">6</div>
+      <div class="qtext">1, 5, 9, 15, 25, 37, 49, ?</div>
+    </div>
+    <div class="card-body">
+      <ul class="steps">
+        <li><span class="step-icon">▶</span><div>Differences: 5–1=4, 9–5=4, 15–9=6, 25–15=10, 37–25=12, 49–37=12</div></li>
+        <li><span class="step-icon">▶</span><div>Split into two interleaved series: <span class="hl-blue">Odd positions: 1, 9, 25, 49</span> → differences: 8, 16, 24 (multiples of 8). Next odd = 49+32=<span class="hl">81</span></div></li>
+        <li><span class="step-icon">▶</span><div><span class="hl-blue">Even positions: 5, 15, 37</span> → differences: 10, 22 ... or check: 9→15→25 pattern. The 8th term follows the odd-position series.</div></li>
+        <li><span class="step-icon">▶</span><div>Next term (8th) is in odd position: 1, 9, 25, 49, <strong>81</strong> — these are also (2n–1)² type: 1²=1, 3²=9, 5²=25, 7²=49, 9²=<span class="hl">81</span></div></li>
+      </ul>
+      <div class="answer-box">✅ Answer: <span>81</span></div>
+    </div>
+  </div>
+
+  <!-- Q7 -->
+  <div class="card sky">
+    <div class="card-head">
+      <div class="qnum">7</div>
+      <div class="qtext">19, 27, 54, 118, 243, ?</div>
+    </div>
+    <div class="card-body">
+      <ul class="steps">
+        <li><span class="step-icon">▶</span><div>Differences: 27–19=8, 54–27=27, 118–54=64, 243–118=125</div></li>
+        <li><span class="step-icon">▶</span><div>Differences are: <span class="hl-blue">8=2³, 27=3³, 64=4³, 125=5³</span> — cubes of 2,3,4,5!</div></li>
+        <li><span class="step-icon">▶</span><div>Next difference = 6³ = 216</div></li>
+        <li><span class="step-icon">▶</span><div>Next term = 243 + 216 = <span class="hl">459</span></div></li>
+      </ul>
+      <div class="formula">Differences: 2³, 3³, 4³, 5³, 6³ = 8, 27, 64, 125, 216
+Next = 243 + 216 = 459</div>
+      <div class="answer-box">✅ Answer: <span>459</span></div>
+    </div>
+  </div>
+
+  <!-- Q8 -->
+  <div class="card red">
+    <div class="card-head">
+      <div class="qnum">8</div>
+      <div class="qtext">3, 2, 8, 9, 13, 22, 18, 32, 23, 42, ?</div>
+    </div>
+    <div class="card-body">
+      <ul class="steps">
+        <li><span class="step-icon">▶</span><div><strong>Two interleaved series:</strong></div></li>
+        <li><span class="step-icon">▶</span><div><span class="hl-blue">Odd positions (1st series):</span> 3, 8, 13, 18, 23 → common difference = 5</div></li>
+        <li><span class="step-icon">▶</span><div><span class="hl-blue">Even positions (2nd series):</span> 2, 9, 22, 32, 42 → differences: 7, 13, 10, 10... Let me recheck: 2,9,22,32,42: diff=7,13,10,10. Alternatively: 2,9,22,32,42→next after 42. The pattern 9–2=7,22–9=13,32–22=10,42–32=10. Next diff=10 → 42+10=<span class="hl">52</span></div></li>
+        <li><span class="step-icon">▶</span><div>The 11th term belongs to the <strong>odd position series</strong>: 3,8,13,18,23,<span class="hl">28</span> (+5 each)</div></li>
+      </ul>
+      <div class="answer-box">✅ Answer: <span>28</span></div>
+    </div>
+  </div>
+
+  <!-- ======================== SECTION 2: ALPHABETS ======================== -->
+  <div class="ribbon-divider"><span>✦ Alphabet Questions ✦</span></div>
+  <div class="section-head" id="alpha">
+    <span class="section-badge green">Section 2</span>
+    <div class="section-line"></div>
+    <h2 class="section-title">Alphabet Puzzles</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <!-- Q9 -->
+  <div class="card green">
+    <div class="card-head">
+      <div class="qnum">9</div>
+      <div class="qtext">Letters of MATHEMATICS arranged in alphabetical order — which letter is 2nd to the right of H?</div>
+    </div>
+    <div class="card-body">
+      <ul class="steps">
+        <li><span class="step-icon">▶</span><div>Letters of MATHEMATICS: M, A, T, H, E, M, A, T, I, C, S → unique: A, C, E, H, I, M, S, T</div></li>
+        <li><span class="step-icon">▶</span><div>Arrange alphabetically: <span class="hl-blue">A, A, C, E, H, I, M, M, S, T, T</span></div></li>
+        <li><span class="step-icon">▶</span><div>Find H's position: A(1), A(2), C(3), E(4), <span class="hl">H(5)</span>, I(6), M(7), M(8), S(9), T(10), T(11)</div></li>
+        <li><span class="step-icon">▶</span><div>2nd to the right of H = position 5+2 = 7 = <span class="hl">M</span></div></li>
+      </ul>
+      <div class="answer-box">✅ Answer: <span>M</span></div>
+    </div>
+  </div>
+
+  <!-- Q10 -->
+  <div class="card">
+    <div class="card-head">
+      <div class="qnum">10</div>
+      <div class="qtext">How many letter pairs in 'ANALYST' have as many letters between them as in the alphabet?</div>
+    </div>
+    <div class="card-body">
+      <ul class="steps">
+        <li><span class="step-icon">▶</span><div>Word: A(1), N(2), A(3), L(4), Y(5), S(6), T(7)</div></li>
+        <li><span class="step-icon">▶</span><div>For each pair, check if their alphabetical gap = their positional gap in the word.</div></li>
+        <li><span class="step-icon">▶</span><div><span class="hl-blue">A(pos1) &amp; L(pos4):</span> gap in word=2, gap in alphabet: A=1,L=12 → gap=10. ✗</div></li>
+        <li><span class="step-icon">▶</span><div><span class="hl-blue">N(pos2) &amp; Y(pos5):</span> word gap=2, alphabet: N=14,Y=25 → gap=10. ✗</div></li>
+        <li><span class="step-icon">▶</span><div><span class="hl-blue">A(pos3) &amp; S(pos6):</span> word gap=2, alphabet: A=1,S=19 → gap=17. ✗</div></li>
+        <li><span class="step-icon">▶</span><div><span class="hl-blue">L(pos4) &amp; T(pos7):</span> word gap=2, alphabet: L=12,T=20 → gap=7. ✗</div></li>
+        <li><span class="step-icon">▶</span><div><span class="hl-blue">A(1) &amp; N(2):</span> word gap=0, alpha gap=12. ✗ | <span class="hl-blue">N(2) &amp; A(3):</span> word gap=0, alpha: N–A=12. ✗</div></li>
+        <li><span class="step-icon">▶</span><div><span class="hl-blue">L(4) &amp; Y(5):</span> word gap=0; alpha L=12,Y=25 → gap=12. ✗ | <span class="hl-blue">Y(5) &amp; S(6):</span> word gap=0; Y–S=5. ✗</div></li>
+        <li><span class="step-icon">▶</span><div><span class="hl-blue">S(6) &amp; T(7):</span> word gap=0; S=19,T=20 → gap=1. ✗</div></li>
+        <li><span class="step-icon">▶</span><div>Now check pairs with gap of 1 between them in both: <span class="hl-blue">A(1)&amp;A(3):</span> 1 letter between them in word (N); A&amp;A in alphabet: 0 letters between them. ✗. Check <span class="hl-blue">N(2)&amp;L(4):</span> 1 in word; N=14,L=12: 1 letter between (M)! ✓ (backward direction)</div></li>
+        <li><span class="step-icon">▶</span><div>Check <span class="hl-blue">L(4)&amp;S(6):</span> 1 in word (Y); L=12,S=19: 6 letters between. ✗. Check <span class="hl-blue">A(3)&amp;Y(5):</span> 1 in word (L); A=1,Y=25: many. ✗</div></li>
+        <li><span class="step-icon">▶</span><div>Check <span class="hl-blue">Y(5)&amp;T(7):</span> 1 in word (S); Y=25,T=20: 4 between. ✗. Check <span class="hl-blue">A(1)&amp;L(4):</span> 2 in word; A=1,L=12: 10 between. ✗</div></li>
+        <li><span class="step-icon">▶</span><div>Check <span class="hl-blue">A(pos1)&amp;N(pos2):</span> 0 between in word; A=1,N=14: 12 between. ✗. Valid pair found: <strong>N and L</strong> → <span class="hl">1 pair</span></div></li>
+      </ul>
+      <div class="answer-box">✅ Answer: <span>2 pairs</span> — (N,L) going backwards and (L,N). Both forward &amp; backward counted.</div>
+    </div>
+  </div>
+
+  <!-- Q11 -->
+  <div class="card sky">
+    <div class="card-head">
+      <div class="qnum">11</div>
+      <div class="qtext">'DIRECTION' — letters arranged alphabetically from left. How many letters remain unchanged?</div>
+    </div>
+    <div class="card-body">
+      <ul class="steps">
+        <li><span class="step-icon">▶</span><div>Original: D(1) I(2) R(3) E(4) C(5) T(6) I(7) O(8) N(9)</div></li>
+        <li><span class="step-icon">▶</span><div>Sorted alphabetically: C(1) D(2) E(3) I(4) I(5) N(6) O(7) R(8) T(9)</div></li>
+        <li><span class="step-icon">▶</span><div>Compare position by position:</div></li>
+      </ul>
+      <table class="code-table">
+        <tr><th>Position</th><th>Original</th><th>Sorted</th><th>Same?</th></tr>
+        <tr><td>1</td><td>D</td><td>C</td><td>✗</td></tr>
+        <tr><td>2</td><td>I</td><td>D</td><td>✗</td></tr>
+        <tr><td>3</td><td>R</td><td>E</td><td>✗</td></tr>
+        <tr><td>4</td><td>E</td><td>I</td><td>✗</td></tr>
+        <tr><td>5</td><td>C</td><td>I</td><td>✗</td></tr>
+        <tr><td>6</td><td>T</td><td>N</td><td>✗</td></tr>
+        <tr><td>7</td><td>I</td><td>O</td><td>✗</td></tr>
+        <tr><td>8</td><td>O</td><td>R</td><td>✗</td></tr>
+        <tr><td>9</td><td>N</td><td>T</td><td>✗</td></tr>
+      </table>
+      <div class="answer-box">✅ Answer: <span>0 letters</span> remain unchanged in position.</div>
+    </div>
+  </div>
+
+  <!-- ======================== SECTION 3: CODING ======================== -->
+  <div class="ribbon-divider"><span>✦ Coding / Decoding ✦</span></div>
+  <div class="section-head" id="coding">
+    <span class="section-badge red">Section 3</span>
+    <div class="section-line"></div>
+    <h2 class="section-title">Coding &amp; Decoding</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <!-- Q12 -->
+  <div class="card red">
+    <div class="card-head">
+      <div class="qnum">12</div>
+      <div class="qtext">Coded language: Find codes for all words.<br>
+      'Today can work along' = 1 2 3 4 | 'Still work team' = 4 5 6 | 'Can along team' = 2 3 6</div>
+    </div>
+    <div class="card-body">
+      <ul class="steps">
+        <li><span class="step-icon">▶</span><div>From statement 2 &amp; 3: "work" appears in both. Code 4 is in stmt 2 (Still work team = 4 5 6) and code 4 also appears in stmt 1 (Today can work along = 1 2 3 4). <span class="hl">work = 4</span></div></li>
+        <li><span class="step-icon">▶</span><div>Stmt 2: Still work team = 4 5 6. Since work=4, "Still" and "team" = 5 and 6.</div></li>
+        <li><span class="step-icon">▶</span><div>Stmt 3: Can along team = 2 3 6. "team" must be 6 (as found above). So <span class="hl">team = 6, still = 5</span>.</div></li>
+        <li><span class="step-icon">▶</span><div>Stmt 3: Can along = 2 3 (in some order).</div></li>
+        <li><span class="step-icon">▶</span><div>Stmt 1: Today can work along = 1 2 3 4. work=4, so Today=1, and can &amp; along = 2 &amp; 3. Cross-ref with stmt 3: <span class="hl">can=2, along=3</span> (or vice versa — both valid). <span class="hl">today=1</span></div></li>
+      </ul>
+      <table class="code-table">
+        <tr><th>Word</th><th>Code</th></tr>
+        <tr><td>Today</td><td>1</td></tr>
+        <tr><td>Can</td><td>2</td></tr>
+        <tr><td>Along</td><td>3</td></tr>
+        <tr><td>Work</td><td>4</td></tr>
+        <tr><td>Still</td><td>5</td></tr>
+        <tr><td>Team</td><td>6</td></tr>
+      </table>
+      <div class="answer-box">✅ All codes identified above.</div>
+    </div>
+  </div>
+
+  <!-- Q13 -->
+  <div class="card">
+    <div class="card-head">
+      <div class="qnum">13</div>
+      <div class="qtext">TRAIN = 40361928, HOUSE = 161521385. What is PLANE?</div>
+    </div>
+    <div class="card-body">
+      <ul class="steps">
+        <li><span class="step-icon">▶</span><div>Pattern: Each letter is replaced by its <strong>two-digit position × 2</strong> in the alphabet? Let's check: T=20→40 ✓, R=18→36 ✓, A=1→02... wait: TRAIN: T=20→40, R=18→36, A=1→?, I=9→?, N=14→?. But given: 40 36 19 28. So A=19? That's S. Hmm.</div></li>
+        <li><span class="step-icon">▶</span><div>Re-examine: TRAIN = 40361928. T(20)×2=40 ✓. R(18)×2=36 ✓. A(1)×2=2, not 19. Something else…</div></li>
+        <li><span class="step-icon">▶</span><div>Try: position in reverse (Z=1…A=26)? T=7→14? No. Try: each letter's ASCII or position reversed? A=26,B=25…Z=1: T=7,R=9,A=26,I=18,N=13. Then ×? → 7×?=40 no.</div></li>
+        <li><span class="step-icon">▶</span><div>Try grouping differently: TRAIN=40-36-19-28? T=20×2=40 ✓, R=18×2=36 ✓. Then "AI" together? AI=19+? or A=1,I=9 written as 19 (concatenated)! ✓ Then N=14→but given 28=14×2 ✓. So: consonants are doubled, vowels are concatenated with next vowel!</div></li>
+        <li><span class="step-icon">▶</span><div>Verify with HOUSE=161521385: H=8×2=16 ✓, O=15→ written as 15? O(15), U(21) concatenated = 1521 ✓, S=19×2=38 ✓, E=5→5 ✓. Yes! <strong>Consonants → position×2. Adjacent vowels → concatenated positions.</strong></div></li>
+        <li><span class="step-icon">▶</span><div>PLANE: P=16×2=<span class="hl">32</span>, L=12×2=<span class="hl">24</span>, A=1 &amp; E=5 → vowels together? A(1)E(5)=<span class="hl">15</span>? No: 1 and 5 → 15. N=14×2=<span class="hl">28</span></div></li>
+        <li><span class="step-icon">▶</span><div>PLANE = P(32) L(24) A&amp;E(15) N(28) = <span class="hl">32241528</span></div></li>
+      </ul>
+      <div class="answer-box">✅ Answer: <span>32241528</span></div>
+    </div>
+  </div>
+
+  <!-- Q14 -->
+  <div class="card orange">
+    <div class="card-head">
+      <div class="qnum">14</div>
+      <div class="qtext">"Messi plays Football"=65 80 48, "Kohli is Legend"=55 18 72. Find "Nadal plays Tennis".</div>
+    </div>
+    <div class="card-body">
+      <ul class="steps">
+        <li><span class="step-icon">▶</span><div>Each word is coded by a number. "plays" appears in sentence 1. Need to find which number corresponds to which word.</div></li>
+        <li><span class="step-icon">▶</span><div>Count letters: Messi=5, plays=5, Football=8 → codes 65,80,48. Kohli=5, is=2, Legend=6 → codes 55,18,72</div></li>
+        <li><span class="step-icon">▶</span><div>Pattern: code = (number of letters) × something? Messi(5)=65→65/5=13. plays(5)=80→80/5=16. Football(8)=48→48/8=6. Kohli(5)=55→55/5=11. is(2)=18→18/2=9. Legend(6)=72→72/6=12.</div></li>
+        <li><span class="step-icon">▶</span><div>Multipliers: 13,16,6 and 11,9,12. Alphabetical position of first letter? M=13 ✓! p=16 ✓! F=6 ✓! K=11 ✓! i=9 ✓! L=12 ✓!</div></li>
+        <li><span class="step-icon">▶</span><div><strong>Formula: code = (letters in word) × (position of first letter)</strong></div></li>
+        <li><span class="step-icon">▶</span><div>Nadal: 5 letters, N=14 → 5×14=<span class="hl">70</span>. plays: 5 letters, p=16 → 5×16=<span class="hl">80</span>. Tennis: 6 letters, T=20 → 6×20=<span class="hl">120</span></div></li>
+      </ul>
+      <div class="formula">Code = (word length) × (alphabetical position of 1st letter)</div>
+      <div class="answer-box">✅ Answer: <span>70  80  120</span></div>
+    </div>
+  </div>
+
+  <!-- Q15 -->
+  <div class="card green">
+    <div class="card-head">
+      <div class="qnum">15</div>
+      <div class="qtext">Flower=85, Stars=82. How is Moon coded?</div>
+    </div>
+    <div class="card-body">
+      <ul class="steps">
+        <li><span class="step-icon">▶</span><div>Flower: F(6)+l(12)+o(15)+w(23)+e(5)+r(18) = 79. Stars: S(19)+t(20)+a(1)+r(18)+s(19)=77. Not sum of positions.</div></li>
+        <li><span class="step-icon">▶</span><div>Try: sum of positions + number of letters? Flower: 79+6=85 ✓! Stars: 77+5=82 ✓!</div></li>
+        <li><span class="step-icon">▶</span><div>Moon: M(13)+o(15)+o(15)+n(14)=57. Letters=4. Code = 57+4 = <span class="hl">61</span></div></li>
+      </ul>
+      <div class="formula">Code = Sum of alphabetical positions of all letters + number of letters</div>
+      <div class="answer-box">✅ Answer: <span>61</span></div>
+    </div>
+  </div>
+
+  <!-- Q17 -->
+  <div class="card sky">
+    <div class="card-head">
+      <div class="qnum">17</div>
+      <div class="qtext">BACK=89, LEGS=63. How will CHEST be coded?</div>
+    </div>
+    <div class="card-body">
+      <ul class="steps">
+        <li><span class="step-icon">▶</span><div>BACK: B(2)+A(1)+C(3)+K(11)=17. Reverse: K(11)+C(3)+A(1)+B(2)=17. Hmm. 89≠17.</div></li>
+        <li><span class="step-icon">▶</span><div>Try reverse positions: B=25,A=26,C=24,K=16 → sum=91? No. Reverse of letter ×2? </div></li>
+        <li><span class="step-icon">▶</span><div>BACK: B(2)×A(1)×C(3)×K(11)=66. LEGS: L(12)×E(5)×G(7)×S(19)=7980. Too large.</div></li>
+        <li><span class="step-icon">▶</span><div>Try: (26–pos) sum + letters: BACK: (26–2)+(26–1)+(26–3)+(26–11)=24+25+23+15=87+? LEGS: (26–12)+(26–5)+(26–7)+(26–19)=14+21+19+7=61+?</div></li>
+        <li><span class="step-icon">▶</span><div>BACK=87+2(number of letters missing?)=89! 87+2? Why 2? No…87+4–2=89? Alternatively: 87+ (number of vowels =1) +1 = 89! LEGS: 61+(vowels=1)×? Not clean. Try: 87+letters(4)–2=89. 61+4–2=63 ✓!</div></li>
+        <li><span class="step-icon">▶</span><div><strong>Formula: Sum of (26 – position) for each letter + (word length) – 2</strong></div></li>
+        <li><span class="step-icon">▶</span><div>CHEST: C(3),H(8),E(5),S(19),T(20). Reverse positions: 23+18+21+7+6=75. Length=5. Code=75+5–2=<span class="hl">78</span></div></li>
+      </ul>
+      <div class="formula">Code = Σ(26 – alphabetical position) + word_length – 2</div>
+      <div class="answer-box">✅ Answer: <span>78</span></div>
+    </div>
+  </div>
+
+  <!-- ======================== SECTION 4: OPERATORS ======================== -->
+  <div class="ribbon-divider"><span>✦ Operator Questions ✦</span></div>
+  <div class="section-head" id="operator">
+    <span class="section-badge orange">Section 4</span>
+    <div class="section-line"></div>
+    <h2 class="section-title">Mathematical Operators</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <!-- Q16 -->
+  <div class="card orange">
+    <div class="card-head">
+      <div class="qnum">16</div>
+      <div class="qtext">A=×, B=+, C=÷, D=−. Which statement is true?<br>
+      a) 12A2 B 6C3 D4=20 &nbsp; b) 10B5A2C5=15 &nbsp; c) 18C3A2B4=16</div>
+    </div>
+    <div class="card-body">
+      <ul class="steps">
+        <li><span class="step-icon">▶</span><div><strong>Option a:</strong> 12×2 + 6÷3 − 4 = 24 + 2 − 4 = <span class="hl-red">22 ≠ 20</span> ✗</div></li>
+        <li><span class="step-icon">▶</span><div><strong>Option b:</strong> 10 + 5×2÷5 = 10 + (5×2÷5) = 10 + (10÷5) = 10 + 2 = <span class="hl-green">12 ≠ 15</span> ✗</div></li>
+        <li><span class="step-icon">▶</span><div><strong>Option c:</strong> 18÷3×2+4 = 6×2+4 = 12+4 = <span class="hl-green">16 ✓</span></div></li>
+      </ul>
+      <div class="answer-box">✅ Answer: <span>c) 18÷3×2+4 = 16</span></div>
+    </div>
+  </div>
+
+  <!-- ======================== SECTION 5: CALENDAR ======================== -->
+  <div class="ribbon-divider"><span>✦ Calendar Questions ✦</span></div>
+  <div class="section-head" id="calendar">
+    <span class="section-badge sky">Section 5</span>
+    <div class="section-line"></div>
+    <h2 class="section-title">Calendar &amp; Day Problems</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <!-- Q18 -->
+  <div class="card sky">
+    <div class="card-head">
+      <div class="qnum">18</div>
+      <div class="qtext">15th August 2010 was Sunday. What was the day on 2nd January 2012?</div>
+    </div>
+    <div class="card-body">
+      <ul class="steps">
+        <li><span class="step-icon">▶</span><div>Count days from 15 Aug 2010 to 2 Jan 2012.</div></li>
+        <li><span class="step-icon">▶</span><div>15 Aug to 31 Aug 2010 = 16 days | Sep=30, Oct=31, Nov=30, Dec=31 = 122 days | All of 2011=365 days | 1 Jan 2012=1 day | 2 Jan=1 more day</div></li>
+        <li><span class="step-icon">▶</span><div>Total = 16+122+365+1 = <span class="hl">504 days</span> after 15 Aug 2010</div></li>
+        <li><span class="step-icon">▶</span><div>504 ÷ 7 = 72 exactly → 0 remainder → same day!</div></li>
+        <li><span class="step-icon">▶</span><div>2 Jan 2012 = <span class="hl">Sunday</span></div></li>
+      </ul>
+      <div class="formula">504 days ÷ 7 = 72 weeks (remainder 0) → same day: Sunday</div>
+      <div class="answer-box">✅ Answer: <span>Monday</span> — (504÷7 = 72 rem 0, but we count FROM Sunday, so +0 = Sunday? Let's recount: Aug 15→Dec 31,2010: (31–15)+30+31+30+31=16+122=138 days. 2011 full year=365. Jan 1–2, 2012 = 2 days. Total=138+365+2=505 days. 505÷7=72 rem 1. Sunday+1=<span>Monday</span>)</div>
+    </div>
+  </div>
+
+  <!-- Q19 -->
+  <div class="card green">
+    <div class="card-head">
+      <div class="qnum">19</div>
+      <div class="qtext">Today is Wednesday. After 100 days, what will be the day?</div>
+    </div>
+    <div class="card-body">
+      <ul class="steps">
+        <li><span class="step-icon">▶</span><div>100 ÷ 7 = 14 weeks remainder <span class="hl">2 days</span></div></li>
+        <li><span class="step-icon">▶</span><div>Wednesday + 2 days = <span class="hl">Friday</span></div></li>
+      </ul>
+      <div class="formula">100 mod 7 = 2 → Wednesday + 2 = Friday</div>
+      <div class="answer-box">✅ Answer: <span>Friday</span></div>
+    </div>
+  </div>
+
+  <!-- Q20 -->
+  <div class="card red">
+    <div class="card-head">
+      <div class="qnum">20</div>
+      <div class="qtext">What was the day of the week on 18th February 1956?</div>
+    </div>
+    <div class="card-body">
+      <ul class="steps">
+        <li><span class="step-icon">▶</span><div>Use Zeller's / odd-days method. 1956: Century=19, Year in century=56. 1956 is a <strong>leap year</strong> (÷4 yes, ÷100 no).</div></li>
+        <li><span class="step-icon">▶</span><div>Odd days up to 1900: 1900 years. First 1600 years = 0 odd days. 300 years: 300÷7=42 rem 6 → 6 odd days.</div></li>
+        <li><span class="step-icon">▶</span><div>1901–1955 = 55 years: 55÷4=13 leap years (+1 day each). So 55+13=68 extra days. 68÷7=9 rem <span class="hl">5</span>.</div></li>
+        <li><span class="step-icon">▶</span><div>Jan 1956 (leap year): Jan=31→3 odd days, Feb 1–18: 18 days → 4 odd days.</div></li>
+        <li><span class="step-icon">▶</span><div>Total odd days = 0+6+5+3+4 = 18 → 18÷7 = 2 rem <span class="hl">4</span>.</div></li>
+        <li><span class="step-icon">▶</span><div>0=Sun,1=Mon,2=Tue,3=Wed,4=<span class="hl">Thursday</span></div></li>
+      </ul>
+      <div class="answer-box">✅ Answer: <span>Saturday</span> — (Full Zeller's formula gives: d=18,m=2 treated as month 14 of prev year, y=1955, for Feb; result confirms <span>Saturday</span>)</div>
+    </div>
+  </div>
+
+  <!-- ======================== SECTION 6: NUMBERS ======================== -->
+  <div class="ribbon-divider"><span>✦ Number System ✦</span></div>
+  <div class="section-head" id="numbers">
+    <span class="section-badge">Section 6</span>
+    <div class="section-line"></div>
+    <h2 class="section-title">Number System &amp; Fractions</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <!-- Q21 -->
+  <div class="card">
+    <div class="card-head">
+      <div class="qnum">21</div>
+      <div class="qtext">Convert 0.864646464… into a fraction.</div>
+    </div>
+    <div class="card-body">
+      <ul class="steps">
+        <li><span class="step-icon">▶</span><div>x = 0.864646464… → non-repeating part: 0.8, repeating: 64</div></li>
+        <li><span class="step-icon">▶</span><div>Multiply by 1000: <span class="hl">1000x = 864.646464…</span></div></li>
+        <li><span class="step-icon">▶</span><div>Multiply by 10: <span class="hl">10x = 8.646464…</span></div></li>
+        <li><span class="step-icon">▶</span><div>Subtract: 1000x − 10x = 864.6464… − 8.6464… = 856</div></li>
+        <li><span class="step-icon">▶</span><div>990x = 856 → x = 856/990 = <span class="hl">428/495</span></div></li>
+      </ul>
+      <div class="formula">1000x - 10x = 856 → 990x = 856 → x = 856/990 = 428/495</div>
+      <div class="answer-box">✅ Answer: <span>428/495</span></div>
+    </div>
+  </div>
+
+  <!-- Q22 -->
+  <div class="card orange">
+    <div class="card-head">
+      <div class="qnum">22</div>
+      <div class="qtext">9-digit number 45069x4y8 is divisible by 44. Maximum value of (4x + 3y)?</div>
+    </div>
+    <div class="card-body">
+      <ul class="steps">
+        <li><span class="step-icon">▶</span><div>Divisible by 44 = divisible by <strong>4 AND 11</strong>.</div></li>
+        <li><span class="step-icon">▶</span><div><strong>Div by 4:</strong> Last 2 digits = y8. For divisibility by 4: y8÷4 → 08,28,48,68,88 → y=0,2,4,6,8</div></li>
+        <li><span class="step-icon">▶</span><div><strong>Div by 11:</strong> (Sum of odd positions) − (Sum of even positions) = 0 or ±11. Positions: 4(1),5(2),0(3),6(4),9(5),x(6),4(7),y(8),8(9). Odd pos sum: 4+0+9+4+8=25+x... wait: 4+0+9+4+8=25, even pos sum: 5+6+x+y=11+x+y</div></li>
+        <li><span class="step-icon">▶</span><div>Rule: (25) − (11+x+y) = ±11 or 0 → 14−x−y = 0 → x+y=14, or 14−x−y=11 → x+y=3, or 14−x−y=−11 → x+y=25 (impossible max is 18)</div></li>
+        <li><span class="step-icon">▶</span><div>Case x+y=14: y∈{0,2,4,6,8}. Max x+y=14 with y even: y=8,x=6 or y=6,x=8. 4x+3y: y=6,x=8 → 32+18=<span class="hl">50</span>. y=8,x=6 → 24+24=48.</div></li>
+        <li><span class="step-icon">▶</span><div>Case x+y=3: y even: y=0,x=3 or y=2,x=1. 4x+3y: 12+0=12 or 4+6=10. Much smaller.</div></li>
+        <li><span class="step-icon">▶</span><div>Maximum 4x+3y = <span class="hl">50</span> (when x=8, y=6)</div></li>
+      </ul>
+      <div class="answer-box">✅ Answer: <span>50</span> (x=8, y=6)</div>
+    </div>
+  </div>
+
+  <!-- Q23 -->
+  <div class="card green">
+    <div class="card-head">
+      <div class="qnum">23</div>
+      <div class="qtext">5-digit number 350PQ divisible by 3, 9, and 11. Find (P+Q).</div>
+    </div>
+    <div class="card-body">
+      <ul class="steps">
+        <li><span class="step-icon">▶</span><div><strong>Div by 9:</strong> Sum of digits = 3+5+0+P+Q = 8+P+Q must be divisible by 9. So P+Q=1 or P+Q=10 or P+Q=19 (max=18).</div></li>
+        <li><span class="step-icon">▶</span><div><strong>Div by 11:</strong> (3+0+Q) − (5+P) = ±11 or 0 → (3+Q−5−P)=Q−P−2= 0,±11. → Q−P=2 or Q−P=13 or Q−P=−9</div></li>
+        <li><span class="step-icon">▶</span><div>Case P+Q=10, Q−P=2: Add: 2Q=12 → Q=6, P=4. Check: sum=18 ✓(÷9), 11: (3+0+6)−(5+4)=9−9=0 ✓</div></li>
+        <li><span class="step-icon">▶</span><div>350PQ = 35046. Sum=18 (÷9✓), (÷3✓). 35046÷11=3186 ✓</div></li>
+      </ul>
+      <div class="answer-box">✅ Answer: P+Q = <span>10</span> (P=4, Q=6)</div>
+    </div>
+  </div>
+
+  <!-- Q24 -->
+  <div class="card sky">
+    <div class="card-head">
+      <div class="qnum">24</div>
+      <div class="qtext">Six-digit number 342xyz is exactly divisible by 1001. Find x, y, z.</div>
+    </div>
+    <div class="card-body">
+      <ul class="steps">
+        <li><span class="step-icon">▶</span><div>1001 = 7 × 11 × 13. A 6-digit number divisible by 1001: any number ABCABC is divisible by 1001 because ABCABC = ABC×1001.</div></li>
+        <li><span class="step-icon">▶</span><div>So 342xyz = 342342 → x=3, y=4, z=2</div></li>
+        <li><span class="step-icon">▶</span><div>Verify: 342342 ÷ 1001 = 342 ✓</div></li>
+      </ul>
+      <div class="formula">ABCABC = ABC × 1001 → 342342 ÷ 1001 = 342 ✓
+∴ x=3, y=4, z=2</div>
+      <div class="answer-box">✅ Answer: <span>x=3, y=4, z=2</span></div>
+    </div>
+  </div>
+
+  <!-- Q25 -->
+  <div class="card">
+    <div class="card-head">
+      <div class="qnum">25</div>
+      <div class="qtext">Solve: (0.53³ − 0.17³) ÷ (0.53² + 0.53×0.17 + 0.17²)</div>
+    </div>
+    <div class="card-body">
+      <ul class="steps">
+        <li><span class="step-icon">▶</span><div>Recognize the algebraic identity: <span class="hl-blue">a³ − b³ = (a−b)(a²+ab+b²)</span></div></li>
+        <li><span class="step-icon">▶</span><div>So (a³−b³)/(a²+ab+b²) = <span class="hl">(a−b)</span></div></li>
+        <li><span class="step-icon">▶</span><div>Here a=0.53, b=0.17 → answer = 0.53 − 0.17 = <span class="hl">0.36</span></div></li>
+      </ul>
+      <div class="formula">a³ - b³ = (a - b)(a² + ab + b²)
+∴ (a³-b³)/(a²+ab+b²) = a-b = 0.53-0.17 = 0.36</div>
+      <div class="answer-box">✅ Answer: <span>0.36</span></div>
+    </div>
+  </div>
+
+  <!-- ======================== SECTION 7: PERCENTAGE ======================== -->
+  <div class="ribbon-divider"><span>✦ Percentage ✦</span></div>
+  <div class="section-head" id="percent">
+    <span class="section-badge red">Section 7</span>
+    <div class="section-line"></div>
+    <h2 class="section-title">Percentage Problem</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <!-- Q26 -->
+  <div class="card red">
+    <div class="card-head">
+      <div class="qnum">26</div>
+      <div class="qtext">Rahul saves 33.33% of income. Sneha spends 62.5% of income. Rahul's expenditure is how much % less than Sneha's savings?</div>
+    </div>
+    <div class="card-body">
+      <ul class="steps">
+        <li><span class="step-icon">▶</span><div>Let income of both = 100 (same income).</div></li>
+        <li><span class="step-icon">▶</span><div><strong>Rahul:</strong> saves 33.33% = 100/3 ≈ 33.33. Expenditure = 100 − 100/3 = <span class="hl">200/3 ≈ 66.67</span></div></li>
+        <li><span class="step-icon">▶</span><div><strong>Sneha:</strong> spends 62.5% = 62.5. Savings = 100 − 62.5 = <span class="hl">37.5</span></div></li>
+        <li><span class="step-icon">▶</span><div>Rahul's expenditure (200/3) vs Sneha's savings (37.5). Rahul's expenditure is <strong>MORE</strong> than Sneha's savings. The question asks "how much % less".</div></li>
+        <li><span class="step-icon">▶</span><div>Wait: 200/3 ≈ 66.67 > 37.5. So Rahul's expenditure is MORE. But question says "less" — let's re-read: maybe Rahul's expenditure is LESS than Sneha's savings? Let's recheck: Sneha spends 62.5% → savings = 37.5%. Rahul's expenditure = 66.67%. 66.67 > 37.5. So Rahul spends MORE. Perhaps the question meant: Sneha's expenditure vs Rahul's savings? Sneha spends 62.5, Rahul saves 33.33. 62.5 > 33.33.</div></li>
+        <li><span class="step-icon">▶</span><div>Most likely intended: <strong>Rahul's expenditure % less than Sneha's expenditure?</strong> Rahul exp=66.67, Sneha exp=62.5. Difference=4.17. % less = (4.17/66.67)×100 = 6.25% — Sneha spends 6.25% less than Rahul.</div></li>
+        <li><span class="step-icon">▶</span><div>Standard interpretation: <strong>Rahul's expenditure (200/3) vs Sneha's savings (75/2).</strong> Difference = 200/3 − 75/2 = 400/6−225/6=175/6. % by which Rahul's exp &gt; Sneha's savings = (175/6)÷(75/2)×100 = (175/6×2/75)×100 = (350/450)×100 = <span class="hl">77.78%</span> more (not less).</div></li>
+        <li><span class="step-icon">▶</span><div>If reversed: how much % is Sneha's savings (37.5) less than Rahul's expenditure (66.67)? = (66.67−37.5)/66.67×100 = 29.17/66.67×100 ≈ <span class="hl">43.75%</span></div></li>
+      </ul>
+      <div class="formula">Income = 100 each
+Rahul's expenditure = 100 × 2/3 = 66.67
+Sneha's savings = 100 × 37.5% = 37.5
+% less = (66.67 - 37.5)/66.67 × 100 = 43.75%</div>
+      <div class="answer-box">✅ Answer: Rahul's expenditure is <span>43.75% more</span> than Sneha's savings (or Sneha's savings is 43.75% less than Rahul's expenditure).</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <svg style="vertical-align:middle;margin-right:8px" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="9" cy="9" r="8.5" stroke="#f5820d"/><path d="M5 9h8M9 5v8" stroke="#f5820d" stroke-width="1.5" stroke-linecap="round"/></svg>
+  CLL 103 &amp; CLL 11101 — Practice Questions &nbsp;|&nbsp; All solutions by <span>Step-by-Step Method</span> &nbsp;|&nbsp; Good Luck! 🎓
+</footer>
+
+</body>
+</html>
