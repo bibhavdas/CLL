@@ -465,7 +465,7 @@
     </div>
   </div>
 
-  <!-- Q6 -->
+<!-- Q6 -->
   <div class="card orange">
     <div class="card-head">
       <div class="qnum">6</div>
@@ -473,12 +473,12 @@
     </div>
     <div class="card-body">
       <ul class="steps">
-        <li><span class="step-icon">▶</span><div>Differences: 5–1=4, 9–5=4, 15–9=6, 25–15=10, 37–25=12, 49–37=12</div></li>
-        <li><span class="step-icon">▶</span><div>Split into two interleaved series: <span class="hl-blue">Odd positions: 1, 9, 25, 49</span> → differences: 8, 16, 24 (multiples of 8). Next odd = 49+32=<span class="hl">81</span></div></li>
-        <li><span class="step-icon">▶</span><div><span class="hl-blue">Even positions: 5, 15, 37</span> → differences: 10, 22 ... or check: 9→15→25 pattern. The 8th term follows the odd-position series.</div></li>
-        <li><span class="step-icon">▶</span><div>Next term (8th) is in odd position: 1, 9, 25, 49, <strong>81</strong> — these are also (2n–1)² type: 1²=1, 3²=9, 5²=25, 7²=49, 9²=<span class="hl">81</span></div></li>
+        <li><span class="step-icon">▶</span><div>This sequence intertwines two different patterns based on squares.</div></li>
+        <li><span class="step-icon">▶</span><div><span class="hl-blue">Odd positions (1st, 3rd, 5th, 7th):</span> Exact squares of odd numbers: 1²=1, 3²=9, 5²=25, 7²=49.</div></li>
+        <li><span class="step-icon">▶</span><div><span class="hl-blue">Even positions (2nd, 4th, 6th):</span> Squares of even numbers alternating with +1 and -1: 2²+1=5, 4²-1=15, 6²+1=37.</div></li>
+        <li><span class="step-icon">▶</span><div>The missing term is in the 8th position (an even position), so it follows the second pattern: 8²-1 = 64-1 = <span class="hl">63</span>.</div></li>
       </ul>
-      <div class="answer-box">✅ Answer: <span>81</span></div>
+      <div class="answer-box">✅ Answer: <span>63</span></div>
     </div>
   </div>
 
@@ -510,9 +510,9 @@ Next = 243 + 216 = 459</div>
     <div class="card-body">
       <ul class="steps">
         <li><span class="step-icon">▶</span><div><strong>Two interleaved series:</strong></div></li>
-        <li><span class="step-icon">▶</span><div><span class="hl-blue">Odd positions (1st series):</span> 3, 8, 13, 18, 23 → common difference = 5</div></li>
-        <li><span class="step-icon">▶</span><div><span class="hl-blue">Even positions (2nd series):</span> 2, 9, 22, 32, 42 → differences: 7, 13, 10, 10... Let me recheck: 2,9,22,32,42: diff=7,13,10,10. Alternatively: 2,9,22,32,42→next after 42. The pattern 9–2=7,22–9=13,32–22=10,42–32=10. Next diff=10 → 42+10=<span class="hl">52</span></div></li>
-        <li><span class="step-icon">▶</span><div>The 11th term belongs to the <strong>odd position series</strong>: 3,8,13,18,23,<span class="hl">28</span> (+5 each)</div></li>
+        <li><span class="step-icon">▶</span><div><span class="hl-blue">Odd positions (1st series):</span> 3, 8, 13, 18, 23 → common difference is +5.</div></li>
+        <li><span class="step-icon">▶</span><div><span class="hl-blue">Even positions (2nd series):</span> 2, 9, 22, 32, 42 → (Note: The '9' is likely a typo for '12' in the original exam to make a clean +10 sequence, but this does not affect our missing number).</div></li>
+        <li><span class="step-icon">▶</span><div>The missing 11th term belongs to the <strong>odd position series</strong>: 3, 8, 13, 18, 23... Next is 23 + 5 = <span class="hl">28</span>.</div></li>
       </ul>
       <div class="answer-box">✅ Answer: <span>28</span></div>
     </div>
@@ -643,18 +643,15 @@ Next = 243 + 216 = 459</div>
     </div>
     <div class="card-body">
       <ul class="steps">
-        <li><span class="step-icon">▶</span><div>Pattern: Each letter is replaced by its <strong>two-digit position × 2</strong> in the alphabet? Let's check: T=20→40 ✓, R=18→36 ✓, A=1→02... wait: TRAIN: T=20→40, R=18→36, A=1→?, I=9→?, N=14→?. But given: 40 36 19 28. So A=19? That's S. Hmm.</div></li>
-        <li><span class="step-icon">▶</span><div>Re-examine: TRAIN = 40361928. T(20)×2=40 ✓. R(18)×2=36 ✓. A(1)×2=2, not 19. Something else…</div></li>
-        <li><span class="step-icon">▶</span><div>Try: position in reverse (Z=1…A=26)? T=7→14? No. Try: each letter's ASCII or position reversed? A=26,B=25…Z=1: T=7,R=9,A=26,I=18,N=13. Then ×? → 7×?=40 no.</div></li>
-        <li><span class="step-icon">▶</span><div>Try grouping differently: TRAIN=40-36-19-28? T=20×2=40 ✓, R=18×2=36 ✓. Then "AI" together? AI=19+? or A=1,I=9 written as 19 (concatenated)! ✓ Then N=14→but given 28=14×2 ✓. So: consonants are doubled, vowels are concatenated with next vowel!</div></li>
-        <li><span class="step-icon">▶</span><div>Verify with HOUSE=161521385: H=8×2=16 ✓, O=15→ written as 15? O(15), U(21) concatenated = 1521 ✓, S=19×2=38 ✓, E=5→5 ✓. Yes! <strong>Consonants → position×2. Adjacent vowels → concatenated positions.</strong></div></li>
-        <li><span class="step-icon">▶</span><div>PLANE: P=16×2=<span class="hl">32</span>, L=12×2=<span class="hl">24</span>, A=1 &amp; E=5 → vowels together? A(1)E(5)=<span class="hl">15</span>? No: 1 and 5 → 15. N=14×2=<span class="hl">28</span></div></li>
-        <li><span class="step-icon">▶</span><div>PLANE = P(32) L(24) A&amp;E(15) N(28) = <span class="hl">32241528</span></div></li>
+        <li><span class="step-icon">▶</span><div>Pattern: Check the alphabetical positions of the letters. Consonants are multiplied by 2, while vowels keep their exact numerical value.</div></li>
+        <li><span class="step-icon">▶</span><div><strong>TRAIN:</strong> T(20×2=40), R(18×2=36), A(1), I(9), N(14×2=28) → <span class="hl-blue">40361928</span> ✓</div></li>
+        <li><span class="step-icon">▶</span><div><strong>HOUSE:</strong> H(8×2=16), O(15), U(21), S(19×2=38), E(5) → <span class="hl-blue">161521385</span> ✓</div></li>
+        <li><span class="step-icon">▶</span><div>Apply to <strong>PLANE:</strong> P(16×2=<span class="hl">32</span>), L(12×2=<span class="hl">24</span>), A(<span class="hl">1</span>), N(14×2=<span class="hl">28</span>), E(<span class="hl">5</span>)</div></li>
+        <li><span class="step-icon">▶</span><div>PLANE = 32 24 1 28 5 = <span class="hl">32241285</span></div></li>
       </ul>
-      <div class="answer-box">✅ Answer: <span>32241528</span></div>
+      <div class="answer-box">✅ Answer: <span>32241285</span></div>
     </div>
   </div>
-
   <!-- Q14 -->
   <div class="card orange">
     <div class="card-head">
